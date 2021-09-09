@@ -1,18 +1,17 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 
 import './CallRejectedDialog.css';
 
-const CallRejectedDialog = ({reason, hideCallRejectedDialog}) => {
-  
+const CallRejectedDialog = ({ reason, hideCallRejectedDialog }) => {
   useEffect(() => {
-   setTimeout(() => {
+    setTimeout(() => {
       hideCallRejectedDialog({
         rejected: false,
         reason: ''
-      })
-   }, [4000])
-  },[]);
-  
+      });
+    }, [4000]);
+  }, []);
+
   return (
     <div className='call_rejected_dialog background_secondary_color'>
       <span>
