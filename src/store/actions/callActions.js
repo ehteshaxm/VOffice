@@ -15,6 +15,9 @@ export const CALL_SET_LOCAL_MICROPHONE_ENABLED = 'CALL.SET_LOCAL_MICROPHONE_ENAB
 export const CALL_SET_LOCAL_CAMERA_ENABLED = 'CALL.SET_LOCAL_CAMERA_ENABLED';
 export const CALL_SET_SCREEN_SHARING_ACTIVE = 'CALL.SET_SCREEN_SHARING_ACTIVE';
 export const CALL_RESET_CALL_STATE = 'CALL.RESET_CALL_STATE';
+export const CALL_SET_GROUP_CALL_ACTIVE = 'CALL.CALL_SET_GROUP_CALL_ACTIVE';
+export const CALL_SET_GROUP_CALL_STREAMS = 'CALL.SET_GROUP_CALL_STREAMS';
+export const CALL_CLEAR_GROUP_CALL_DATA = 'CALL.CLEAR_GROUP_CALL_DATA';
 
 export const setLocalStream = (localStream) => {
   return {
@@ -89,5 +92,25 @@ export const setScreenSharingActive = (active) => {
 export const resetCallDataState = () => {
   return {
     type: CALL_RESET_CALL_STATE
+  };
+};
+
+export const setGroupCallActive = (active) => {
+  return {
+    type: CALL_SET_GROUP_CALL_ACTIVE,
+    active
+  };
+};
+
+export const setGroupCallIncomingStreams = (groupCallStreams) => {
+  return {
+    type: CALL_SET_GROUP_CALL_STREAMS,
+    groupCallStreams
+  };
+};
+
+export const clearGroupCallData = () => {
+  return {
+    type: CALL_CLEAR_GROUP_CALL_DATA
   };
 };
