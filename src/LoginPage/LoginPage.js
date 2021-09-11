@@ -1,52 +1,43 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { connect } from "react-redux";
-import { setUsername } from "../store/actions/dashboardActions";
-import { registerNewUser } from "../utils/wssConnection/wssConnection";
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import logo from '../resources/logo.png';
+import UsernameInput from './components/UsernameInput';
+import SubmitButton from './components/SubmitButton';
+import { useHistory } from 'react-router-dom';
+import { setUsername } from '../store/actions/dashboardActions';
+import { registerNewUser } from '../utils/wssConnection/wssConnection';
+import './LoginPage.css';
 
 const LoginPage = ({ saveUsername }) => {
-  const [username, setusername] = useState("");
+  const [username, setUsername] = useState('');
+
   const history = useHistory();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (username !== "") {
-      registerNewUser(username);
-      saveUsername(username);
-      history.push("/dashboard");
-    }
+  const handleSubmitButtonPressed = () => {
+    registerNewUser(username);
+    saveUsername(username);
+    history.push('/dashboard');
   };
 
   return (
-    <div style={{ marginTop: "200px" }}>
-      <form className="mx-auto w-25 h-25 my-auto text-white">
-        <h3 className="mb-3">Vid ProjeX</h3>
-
-        <div className="form-group mb-3">
-          <label className="mb-2">Enter Your Name</label>
-          <input
-            className="form-control"
-            placeholder="Name"
-            value={username}
-            onChange={(e) => setusername(e.target.value)}
-          />
+    <div className='login-page_container background_main_color'>
+      <div className='login-page_login_box background_secondary_color'>
+        <div className='login-page_logo_container'>
+          <img className='login-page_logo_image' src={logo} alt='VideoTalker' />
         </div>
-
-        <button
-          type="submit"
-          className="btn btn-primary btn-block"
-          onClick={handleSubmit}
-        >
-          Start the Chat
-        </button>
-      </form>
+        <div className='login-page_title_container'>
+          <h2>Get on Board</h2>
+        </div>
+        <UsernameInput username={username} setUsername={setUsername} />
+        <SubmitButton handleSubmitButtonPressed={handleSubmitButtonPressed} />
+      </div>
     </div>
   );
 };
 
 const mapActionsToProps = (dispatch) => {
   return {
-    saveUsername: (username) => dispatch(setUsername(username)),
+    saveUsername: username => dispatch(setUsername(username))
   };
 };
 

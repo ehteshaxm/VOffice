@@ -1,12 +1,15 @@
-import React, { useEffect } from "react";
-import './app.css';
-import { connectWithWebSocket } from "./utils/wssConnection/wssConnection";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Dashboard from "./Dashboard/Dashboard";
-import LoginPage from "./LoginPage/LoginPage";
+import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
+import { useEffect } from 'react';
+import { connectWithWebSocket } from './utils/wssConnection/wssConnection';
+import Dashboard from './Dashboard/Dashboard';
+import LoginPage from './LoginPage/LoginPage';
 
-
-function App() {
+function App () {
   useEffect(() => {
     connectWithWebSocket();
   }, []);
@@ -14,10 +17,10 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/dashboard">
+        <Route path='/dashboard'>
           <Dashboard />
         </Route>
-        <Route path="/">
+        <Route path='/'>
           <LoginPage />
         </Route>
       </Switch>

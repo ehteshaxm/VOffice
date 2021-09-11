@@ -32,8 +32,6 @@ export const connectWithMyPeer = () => {
   });
 };
 
-
-// Triggered when clicked on Create Room Button
 export const createNewGroupCall = () => {
   groupCallHost = true;
   wss.registerGroupCall({
@@ -54,7 +52,7 @@ export const joinGroupCall = (hostSocketId, roomId) => {
     peerId: myPeerId,
     hostSocketId,
     roomId,
-    streamId: localStream.id
+    localStreamId: localStream.id
   });
 
   store.dispatch(setGroupCallActive(true));
